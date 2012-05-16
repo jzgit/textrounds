@@ -28,6 +28,9 @@ gem 'bourbon'
 gem 'tab_menu'
 gem "twitter-bootstrap-rails", "~> 2.0.1.0"
 
+gem 'twilio-ruby'
+gem 'trails', '~> 1.1.6'
+
 group :development do
   gem 'rspec-rails'
 

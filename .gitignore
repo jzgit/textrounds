@@ -7,6 +7,7 @@ tmp/*
 public/system/*
 public/stylesheets/compiled/*
 config/database.yml
+config/twilio_env.rb
 db/*.sqlite3
 db/structure.sql
 *.swp
