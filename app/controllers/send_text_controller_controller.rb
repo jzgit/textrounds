@@ -16,6 +16,7 @@ class SendTextControllerController < ApplicationController
       :to => '2154706093',
       :body => "Hey Jin this is Curbside - Just wanted to check in"
     )
+    flash[:notice] = 'Message sent'
     redirect_to root_path
   end
 end

@@ -15,7 +15,7 @@
 
     <%= yield :extra_header %>
   </head>
-  <body class="row <%= body_class %>">
+  <body class="<%= body_class %>">
     <%= render :partial => 'layouts/flashes' -%>
     <%= yield %>
 
