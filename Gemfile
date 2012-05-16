@@ -2,7 +2,6 @@ source :rubygems
 
 gem 'rails', '3.2.3'
 
-gem 'sqlite3'
 gem 'pg'
 
 group :assets do
