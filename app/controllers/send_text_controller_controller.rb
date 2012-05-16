@@ -5,8 +5,8 @@ class SendTextControllerController < ApplicationController
   def send_text_message
     #number_to_send_to = params[:number_to_send_to]
 
-    twilio_sid = ENV['twilio_sid']
-    twilio_token = ENV['twilio_token']
+    twilio_sid = ENV['TWILIO_SID']
+    twilio_token = ENV['TWILIO_TOKEN']
     twilio_phone_number = "(215) 352-5455"
 
     @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
