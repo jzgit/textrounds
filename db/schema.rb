@@ -11,7 +11,43 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120516082247) do
+ActiveRecord::Schema.define(:version => 20120531153112) do
+
+  create_table "consults", :force => true do |t|
+    t.integer  "consulting_team_id"
+    t.integer  "primary_team_id"
+    t.integer  "patient_id"
+    t.string   "room"
+    t.text     "hpi"
+    t.text     "problem_list"
+    t.text     "medications"
+    t.text     "cross_cover"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "state"
+    t.integer  "user_id"
+  end
+
+  create_table "patients", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "mrn"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "team_memberships", :force => true do |t|
+    t.integer  "team_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "teams", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -27,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20120516082247) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "phone_number"
+    t.integer  "team_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

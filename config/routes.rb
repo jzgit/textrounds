@@ -2,6 +2,9 @@ Textrounds::Application.routes.draw do
   get "home/index"
 
   devise_for :users
+  resources :teams
+  resources :consults
+  resources :patients
 
   get "receive_text/index"
 

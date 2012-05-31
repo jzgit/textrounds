@@ -1,0 +1,13 @@
+<%= simple_form_for resource do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :first_name, required: true %>
+    <%= f.input :last_name, required: true %>
+    <%= f.input :mrn, as: :string, label: 'Medical Record Number', required: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit, "Add Patient" %>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+<%= simple_form_for resource do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :primary_team_id, as: :select, collection: Team.all.collect { |t| [t.name, t.id] } %>
+    <%= f.input :consulting_team_id, as: :select, collection: Team.all.collect { |t| [t.name, t.id] } %>
+    <%= f.input :room %>
+    <%= link_to 'add patient', new_patient_path %>
+    <%= f.input :patient_id, as: :select, collection: Patient.all.collect { |t| [t.identity, t.id] } %>
+    <%= f.input :hpi %>
+    <%= f.input :problem_list %>
+    <%= f.input :medications %>
+    <%= f.input :cross_cover %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit, "Sign up" %>
+  </div>
+<% end %>

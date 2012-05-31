@@ -2,7 +2,7 @@ class SendTextControllerController < ApplicationController
   def index
   end
 
-  def send_text_message
+  def self.send_text_message(consult)
     #number_to_send_to = params[:number_to_send_to]
 
     twilio_sid = ENV['TWILIO_SID']
@@ -12,18 +12,16 @@ class SendTextControllerController < ApplicationController
 
     @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
 
-    numbers = ['2154706093','2157407075']
+    numbers = ['2154706093']
 
     numbers.each do |num|
       @twilio_client.account.sms.messages.create(
         :from => "+1#{twilio_phone_number}",
         :to => num,
-        :body => "Hey Jin this is Curbside - Just wanted to check in"
+        :body => "Hey Jason, Your team just got a new consult from #{Team.find_by_id(consult.consulting_team_id).name}. "
       )
     end
 
 
-    flash[:notice] = 'Message sent'
-    redirect_to root_path
   end
 end
