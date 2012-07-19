@@ -1,16 +1,9 @@
-.main {
-  width: 120px;
-  padding-top: 100px;
-  margin-right: auto;
-  margin-left: auto;
-  text-align: center;
-}
-.reg {
-  margin: 100px 33%;
-  padding: 30px 50px 70px 50px;
-}
+@import "bourbon";
+@import "variables";
+@import "mixins";
 
-#flash {
-  margin: 10px 20%;
+body {
+  font-family:$baseFontFamily;
+  font-weight:$baseFontWeight;
 }
 

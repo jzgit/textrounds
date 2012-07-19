@@ -21,4 +21,6 @@ class User < ActiveRecord::Base
   has_many :teams,
     through: :team_memberships
   accepts_nested_attributes_for :team_memberships
+
+  has_many :messages
 end

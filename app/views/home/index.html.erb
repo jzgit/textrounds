@@ -1,20 +1,19 @@
-<div class='main'>
-  <% if current_user && current_user.team.present? -%>
-    <div>
-      Your current team is <%= link_to current_user.team.name, team_path(current_user.team) %>
-    </div>
-  <% end -%>
-  <br />
-    <div>
-      Strart a <%= link_to 'new consult', new_consult_path %>
-    </div>
-  <br />
-  <%# link_to 'click to text jin', { action: 'send_text_message', controller: 'send_text_controller'} %>
-  <h2>curbside</h2>
-  <br />
-
-
-  <div id="user_nav">
+<div class='row'>
+  <div class="span10">
+    <h2>curbside</h2>
+    <% if current_user && current_user.team.present? -%>
+      <div>
+        Your current team is <%= link_to current_user.team.name, team_path(current_user.team) %>
+      </div>
+    <% end -%>
+    <br />
+      <div>
+        Strart a <%= link_to 'new consult', new_consult_path %>
+      </div>
+    <br />
+    <br />
+  </div>
+  <div class="span2" id="user_nav">
     <% if user_signed_in? %>
       Signed in as <%= link_to current_user.email, edit_registration_path(current_user) %>. Not you?
       <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
@@ -22,10 +21,16 @@
       <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
     <% end %>
   </div>
-  <br />
-  <h2>Consults</h2>
-  <%  Consult.all.each do |c| %>
-    <%= link_to c.patient.identity, consult_path(c) %>
-  <% end -%>
+</div>
+<div class="row">
+  <div class="span3" id="user_nav">
+    <% if user_signed_in? %>
+      <h2>Consults</h2>
+      <%  Consult.all.each do |c| %>
+        <%= link_to c.patient.identity, consult_path(c) %><br />
+      <% end -%>
+    <% end -%>
+  </div>
+</div>
 </div>
 

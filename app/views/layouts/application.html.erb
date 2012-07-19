@@ -16,8 +16,10 @@
     <%= yield :extra_header %>
   </head>
   <body class="<%= body_class %>">
-    <%= render :partial => 'layouts/flashes' -%>
-    <%= yield %>
+    <div class="container">
+      <%= render :partial => 'layouts/flashes' -%>
+      <%= yield %>
+    </div>
 
     <%= javascript_include_tag 'application' %>
 

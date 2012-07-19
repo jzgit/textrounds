@@ -1,1 +1,25 @@
 <h2><%= @team.name %> - team dashboard</h2>
+
+<% @team.consults.each do |c| %>
+  <%= c.patient.name %>
+  <%= c.room %>
+  <br />
+  <br />
+<% end -%>
+<% @team.messages.each do |m| %>
+  <%= m.text %>
+  <%= m.user.email %>
+  <%= "#{time_ago_in_words(m.created_at)}" %>
+  <br />
+<% end -%>
+<%= simple_form_for [@team, @message || @team.messages.build ],
+  html: {class: "form-horizontal"} do |f| %>
+
+  <%= f.error_notification %>
+
+  <%= f.input :text, label: "Team message" %>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<%- end -%>
