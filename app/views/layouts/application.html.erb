@@ -16,9 +16,53 @@
     <%= yield :extra_header %>
   </head>
   <body class="<%= body_class %>">
-    <div class="container">
-      <%= render :partial => 'layouts/flashes' -%>
+    <div class="sidebar auth-box">
+      <% if user_signed_in? %>
+        <%= link_to current_user.email, edit_registration_path(current_user) %> |
+        <%= link_to "sign out", destroy_user_session_path, :method => :delete %>
+      <% else %>
+        <%= link_to "sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+      <% end %>
+      <h2>curbside</h2>
+      <% if current_user && current_user.team.present? -%>
+        <div>
+          <%= link_to current_user.team.name, team_path(current_user.team) %>
+        </div>
+      <% end -%>
+      <div>
+        <%= link_to 'new consult', new_consult_path, class: 'btn btn-success' %>
+      </div>
+      <% if user_signed_in? %>
+        <h2>consults</h2>
+        <ul class="nav nav-list">
+          <li class="nav-header">Owned</li>
+          <%  Consult.owned_by(current_user).each do |c| %>
+            <li class="<%= c == @consult ? 'active' : '' %>">
+            <%= link_to c.patient.identity, consult_path(c) %><br />
+            </li>
+          <% end -%>
+          <li class="nav-header">Active</li>
+          <%  Consult.for_team(current_user.team).each do |c| %>
+            <li class="<%= c == @consult ? 'active' : '' %>">
+            <%= link_to c.patient.identity, consult_path(c) %><br />
+            </li>
+          <% end -%>
+          <li class="nav-header">Following</li>
+          <li class="nav-header">Ordered</li>
+          <%  Consult.ordered_by(current_user.team).each do |c| %>
+            <li class="<%= c == @consult ? 'active' : '' %>">
+            <%= link_to c.patient.identity, consult_path(c) %><br />
+            </li>
+          <% end -%>
+        </ul>
+      <% end -%>
+    </div>
+    <div class="main">
+      <div class="flashes">
+        <%= render :partial => 'layouts/flashes' -%>
+      </div>
       <%= yield %>
+    </div>
     </div>
 
     <%= javascript_include_tag 'application' %>

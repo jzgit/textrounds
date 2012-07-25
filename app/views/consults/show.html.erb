@@ -1,23 +1,21 @@
-<div class="row">
-  <div class="offset2 span8">
-    <h2><%= Team.find_by_id(@consult.consulting_team_id).name %> Consult for <%= @consult.patient.identity %></h2>
-    <h3>Room: <%= @consult.room %></h3>
+<div class="center-panel">
+  <%= simple_form_for resource, class: "form-horizontal" do |f| %>
+    <h2><%= @consult.patient.identity %> (<%= @consult.room %>)</h2>
+    <h2><%= Team.find_by_id(@consult.consulting_team_id).name %> Consult</h2>
     <h4>Ordered by <%= Team.find_by_id(@consult.primary_team_id).name %> </h4>
+    <%= f.input :user_id, label: 'consult assigned to', wrapper_html: {class: "inline-label"},
+      as: :select, collection: User.all.collect { |t| [t.email, t.id] } %>
     <br />
-    <%= simple_form_for resource do |f| %>
-      <%= f.error_notification %>
-      <div class="inputs">
-        <%= f.input :user_id, label: 'consult assigned to', as: :select, collection: User.all.collect { |t| [t.email, t.id] } %>
-        <%= f.input :hpi, label: 'HPI', input_html: {rows: 6} %>
-        <%= f.input :problem_list, input_html: {rows: 6} %>
-        <%= f.input :medications, input_html: {rows: 6} %>
-        <%= f.input :cross_cover, input_html: {rows: 6} %>
-      </div>
+    <%= f.error_notification %>
+    <div class="inputs">
+      <%= f.input :hpi, label: 'HPI', input_html: {rows: 6} %>
+      <%= f.input :problem_list, input_html: {rows: 6} %>
+      <%= f.input :medications, input_html: {rows: 6} %>
+      <%= f.input :cross_cover, input_html: {rows: 6} %>
+    </div>
 
-      <div class="actions">
-        <%= f.button :submit, "Update consult" %>
-      </div>
-    <% end %>
-    
-  </div>
+    <div class="actions">
+      <%= f.button :submit, "Update consult" %>
+    </div>
+  <% end %>
 </div>

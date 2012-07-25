@@ -12,7 +12,7 @@ class SendTextControllerController < ApplicationController
 
     @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
 
-    numbers = ['2154706093']
+    numbers = ['2154706093', '9178998247']
 
     numbers.each do |num|
       @twilio_client.account.sms.messages.create(

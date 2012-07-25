@@ -1,0 +1,29 @@
+// TEXT
+// ------------------------------
+
+$halfLineHeight:        9px;
+$baseLineHeight:        18px;
+$doubleLineHeight:      36px;
+
+
+$sansFontFamily:        'Open Sans', sans-serif;
+$baseFontFamily:        $sansFontFamily;
+
+$largeFontSize:         14px;
+$baseFontSize:          13px;
+$smallFontSize:         11px;
+
+$lightFontWeight:       300;
+$baseFontWeight:        400;
+$boldFontWeight:        600;
+
+
+// LAYOUT
+// ------------------------------
+
+$containerWidth:        940px;
+$sidebarWidth:          290px;
+
+/* @gutter + @padding == @baseLineHeight */
+$gutter:                10px;
+$padding:               8px 15px;

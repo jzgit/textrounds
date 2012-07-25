@@ -6,4 +6,54 @@ body {
   font-family:$baseFontFamily;
   font-weight:$baseFontWeight;
 }
+centered {
+  text-align: center;
+}
+
+
+// nav
+
+.nav-list {
+  padding: 0 30px;
+}
+.inline-label {
+  padding-top: 10px;
+  label, div {
+    @include inline-block;
+    padding: 5px 10px 0 0;
+  }
+  label {
+    vertical-align: top;
+    margin-top: 5px;
+  }
+}
+
+.auth-box {
+  width: 200px;
+}
+.main {
+  padding-left: 250px;
+}
+.flashes {
+  padding-top: 20px;
+}
+.center-panel {
+  padding: 30px 75px;
+  h2 { margin-bottom: 10px;}
+}
+
+.reg {
+  padding: 68px 75px;
+  h2 { margin-bottom: 10px;}
+}
+
+.sidebar {
+  text-align: center;
+  border-right: 1px solid #666;
+  padding: 50px 0;
+  width: 250px;
+  height: 100%;
+  position: fixed;
+
+}
 

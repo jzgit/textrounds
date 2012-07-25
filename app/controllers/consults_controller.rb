@@ -3,7 +3,7 @@ class ConsultsController < ApplicationController
 
   def create
     create! do |success, failure|
-      #SendTextControllerController.send_text_message(resource)
+      SendTextControllerController.send_text_message(resource)
     end
   end
 end

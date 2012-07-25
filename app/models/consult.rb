@@ -7,5 +7,17 @@ class Consult < ActiveRecord::Base
   belongs_to :user,
     inverse_of: :consults
 
+  class << self
+    def for_team(team)
+      where("consulting_team_id = ?", team.id)
+    end
+    def ordered_by(team)
+      where("primary_team_id = ?", team.id)
+    end
+    def owned_by(user)
+      where("user_id = ?", user.id)
+    end
+  end
+
 
 end
