@@ -27,6 +27,7 @@ gem 'bourbon'
 gem 'tab_menu'
 gem "twitter-bootstrap-rails", "~> 2.0.1.0"
 gem 'carrierwave'
+gem 'fog'
 gem 'mini_magick'
 
 gem 'twilio-ruby'
