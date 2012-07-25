@@ -12,7 +12,14 @@ centered {
 
 
 // nav
-
+textarea {
+  border: none;
+  resize: none;
+}
+.control-group.text {
+  @include inline-block;
+  margin-right: 10px;
+}
 .nav-list {
   padding: 0 30px;
 }
